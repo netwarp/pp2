@@ -18,6 +18,8 @@ use Spiral\Router\RouteInterface;
 use Spiral\Router\RouterInterface;
 use Spiral\Router\Target\Controller;
 use Spiral\Router\Target\Namespaced;
+use App\Controller\Front\FrontController;
+use Spiral\Router\Target\Action;
 
 class RoutesBootloader extends Bootloader
 {
@@ -26,32 +28,34 @@ class RoutesBootloader extends Bootloader
      */
     public function boot(RouterInterface $router): void
     {
-        // named route
+        /*
+         * Front Pages
+         * TODO refacto in namespace
+         *
+         * */
         $router->setRoute(
-            'html',
-            new Route('/<action>.html', new Controller(HomeController::class))
+            'index',
+            new Route('/', new Action(FrontController::class, 'index'))
         );
 
-        // fallback (default) route
-        $router->setDefault($this->defaultRoute());
-    }
-
-    /**
-     * Default route points to namespace of controllers.
-     *
-     * @return RouteInterface
-     */
-    protected function defaultRoute(): RouteInterface
-    {
-        // handle all /controller/action like urls
-        $route = new Route(
-            '/[<controller>[/<action>]]',
-            new Namespaced('App\\Controller')
+        $router->setRoute(
+            'podcasts',
+            new Route('podcasts', new Action(FrontController::class, 'podcasts'))
         );
 
-        return $route->withDefaults([
-            'controller' => 'home',
-            'action'     => 'index'
-        ]);
+        $router->setRoute(
+            'podcast',
+            new Route('podcasts/<slug>', new Action(FrontController::class, 'podcast'))
+        );
+
+        $router->setRoute(
+            'events',
+            new Route('events', new Action(FrontController::class, 'events'))
+        );
+
+        $router->setRoute(
+            'contact',
+            new Route('contact', new Action(FrontController::class, 'contact'))
+        );
     }
 }
