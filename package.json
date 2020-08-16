@@ -1,0 +1,17 @@
+{
+  "name": "polis-parallele",
+  "version": "1.0.0",
+  "description": "<img src=\"https://user-images.githubusercontent.com/796136/67560465-9d827780-f723-11e9-91ac-9b2fafb027f2.png\" height=\"135px\" alt=\"Spiral Framework\" align=\"left\"/>",
+  "main": "index.js",
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "rollup": "^2.26.0"
+  }
+}
