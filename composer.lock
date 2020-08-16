@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "76728ce44ba51c70fc777a72f27e8e97",
+    "content-hash": "1bde169769652d47bcbd1707311d0bf7",
     "packages": [
         {
             "name": "cocur/slugify",
@@ -2158,6 +2158,94 @@
             "notification-url": "https://packagist.org/downloads/",
             "description": "Annotations parser using strict node grammar",
             "time": "2019-09-13T10:14:27+00:00"
+        },
+        {
+            "name": "spiral/auth",
+            "version": "v1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spiral/auth.git",
+                "reference": "06414906de78878d58987a000127a63afb84d17c"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spiral/auth/zipball/06414906de78878d58987a000127a63afb84d17c",
+                "reference": "06414906de78878d58987a000127a63afb84d17c",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^7.2"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "~7.0",
+                "spiral/code-style": "^1.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Spiral\\Auth\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Anton Titov / Wolfy-J",
+                    "email": "wolfy.jd@gmail.com"
+                }
+            ],
+            "description": "Common Authentication Interfaces",
+            "time": "2019-10-23T10:53:57+00:00"
+        },
+        {
+            "name": "spiral/auth-http",
+            "version": "v1.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spiral/auth-http.git",
+                "reference": "0bccb87e983645ba45cd568a07ba03394cabaa56"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spiral/auth-http/zipball/0bccb87e983645ba45cd568a07ba03394cabaa56",
+                "reference": "0bccb87e983645ba45cd568a07ba03394cabaa56",
+                "shasum": ""
+            },
+            "require": {
+                "ext-json": "*",
+                "php": "^7.2",
+                "psr/http-message": "^1.0",
+                "psr/http-server-middleware": "^1.0",
+                "spiral/auth": "^1.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "~7.0",
+                "spiral/code-style": "^1.0",
+                "spiral/cookies": "^1.2",
+                "spiral/debug": "^1.3",
+                "spiral/http": "^1.2",
+                "zendframework/zend-diactoros": "^1.8"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Spiral\\Auth\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Anton Titov / Wolfy-J",
+                    "email": "wolfy.jd@gmail.com"
+                }
+            ],
+            "description": "Authorization component with set of authentication middlewares and providers",
+            "time": "2020-08-12T13:30:21+00:00"
         },
         {
             "name": "spiral/boot",
