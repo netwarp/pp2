@@ -11,7 +11,6 @@ declare(strict_types=1);
 
 namespace App\Bootloader;
 
-use App\Controller\HomeController;
 use Spiral\Boot\Bootloader\Bootloader;
 use Spiral\Router\Route;
 use Spiral\Router\RouteInterface;
@@ -20,9 +19,14 @@ use Spiral\Router\Target\Controller;
 use Spiral\Router\Target\Namespaced;
 use App\Controller\Front\FrontController;
 use Spiral\Router\Target\Action;
+use App\Controller\Auth\LoginController;
+use Spiral\Csrf\Middleware\CsrfFirewall;
+use Spiral\Prototype\Traits\PrototypeTrait;
 
 class RoutesBootloader extends Bootloader
 {
+    use PrototypeTrait;
+
     /**
      * @param RouterInterface $router
      */
@@ -56,6 +60,29 @@ class RoutesBootloader extends Bootloader
         $router->setRoute(
             'contact',
             new Route('contact', new Action(FrontController::class, 'contact'))
+        );
+
+        $route = new Route('login', new Action(LoginController::class, 'login'));
+        $router->setRoute(
+            'login',
+            $route
+                ->withVerbs('GET')
+                ->withMiddleware(CsrfFirewall::class)
+                ->withDefaults(['action' => 'GET'])
+        );
+
+        $route = new Route('login', new Action(LoginController::class, 'postLogin'));
+        $router->setRoute(
+            'postLogin',
+            $route->withVerbs('POST')->withDefaults(['action' => 'POST'])
+        );
+
+        $router->setRoute(
+            'logout',
+            new Route('logout', function() {
+                $this->auth->close();
+                return $this->response->redirect('/');
+            })
         );
     }
 }
