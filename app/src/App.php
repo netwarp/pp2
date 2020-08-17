@@ -81,7 +81,11 @@ class App extends Kernel
         // Debug and debug extensions
         Framework\DebugBootloader::class,
         Framework\Debug\LogCollectorBootloader::class,
-        Framework\Debug\HttpCollectorBootloader::class
+        Framework\Debug\HttpCollectorBootloader::class,
+
+        Framework\Auth\HttpAuthBootloader::class,
+        Framework\Auth\TokenStorage\SessionTokensBootloader::class,
+        Framework\Auth\TokenStorage\CycleTokensBootloader::class,
     ];
 
     /*
