@@ -19,7 +19,7 @@ class MyMigrationMigration extends Migration
     {
         $this->table('users')
             ->addColumn('id', 'primary')
-            ->addColumn('name', 'string')
+            ->addColumn('username', 'string')
             ->addColumn('email', 'string')
             ->addColumn('password', 'string')
             ->create();
