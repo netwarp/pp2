@@ -21,12 +21,15 @@ class LoginController
 
     public function login(ViewsInterface $views, ServerRequestInterface $request, AuthContextInterface $auth)
     {
-
         if ($auth->getActor() === null) {
             $title = 'Login';
             $csrfToken = $request->getAttribute('csrfToken');
             return $views->render('auth/login', compact('title', 'csrfToken'));
         }
+        else {
+            return $this->response->redirect('/dashboard');
+        }
+
     }
 
     public function postLogin(LoginRequest $request)
@@ -53,7 +56,7 @@ class LoginController
             $this->authTokens->create(['userID' => $user->id])
         );
 
-        return $this->response->redirect('/toto');
+        return $this->response->redirect('/dashboard');
         /*
         return [
             'status'  => 200,
