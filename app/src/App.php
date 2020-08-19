@@ -11,7 +11,7 @@ declare(strict_types=1);
 
 namespace App;
 
-use App\Bootloader;
+use App\Bootloader\AuthBootloader;
 use Spiral\Bootloader as Framework;
 use Spiral\DotEnv\Bootloader as DotEnv;
 use Spiral\Framework\Kernel;
@@ -86,6 +86,8 @@ class App extends Kernel
         Framework\Auth\HttpAuthBootloader::class,
         Framework\Auth\TokenStorage\SessionTokensBootloader::class,
         Framework\Auth\TokenStorage\CycleTokensBootloader::class,
+        Framework\Auth\SecurityActorBootloader::class,
+        AuthBootloader::class,
     ];
 
     /*
