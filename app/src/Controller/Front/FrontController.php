@@ -8,16 +8,24 @@ declare(strict_types=1);
 
 namespace App\Controller\Front;
 
+use Spiral\Views\ViewsInterface;
+
 class FrontController
 {
-    public function index()
+    private $title = 'Polis Parallème';
+
+    public function index(ViewsInterface $views)
     {
-        return 'welcome home';
+        $title = $this->title;
+
+        return $views->render('front/index', compact('title'));
     }
 
-    public function podcasts()
+    public function podcasts(ViewsInterface $views)
     {
-        return 'ALL podcasts 0.0.00.0.';
+        $title = "$this->title | Podcasts";
+
+        return $views->render('front/podcasts', compact('title'));
     }
 
     public function podcast($slug)
@@ -25,9 +33,11 @@ class FrontController
         var_dump($slug);
     }
 
-    public function events()
+    public function events(ViewsInterface $views)
     {
-        return 'events';
+        $title = "$this->title | Events";
+
+        return $views->render('front/events', compact('title'));
     }
 
     public function contact()
