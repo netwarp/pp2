@@ -6,3 +6,4 @@ spiral*
 .env
 .phpunit.result.cache
 node_modules
+storage/*
