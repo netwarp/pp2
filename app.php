@@ -18,6 +18,7 @@ require __DIR__ . '/vendor/autoload.php';
 // initiate shared container, bindings, directories and etc
 $app = \App\App::init([
     'root' => __DIR__,
+    'storage' => __DIR__ . '/storage'
 ]);
 
 if ($app != null) {
