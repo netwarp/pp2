@@ -14,6 +14,7 @@ namespace App\Bootloader;
 use App\Controller\Dashboard\DashboardController;
 use App\Controller\Dashboard\EventsController;
 use App\Controller\Dashboard\PodcastsController;
+use App\Controller\Dashboard\PostsController;
 use Laminas\Diactoros\Uri;
 use Spiral\Boot\Bootloader\Bootloader;
 use Spiral\Router\Route;
@@ -117,26 +118,40 @@ class RoutesBootloader extends Bootloader
         $router->setRoute(
             'dashboard.dashboard',
             (new Route(
-                'dashboard',
+                '/dashboard',
                 new Action(
                     DashboardController::class,
                     'index'
                 )
-            ))->withMiddleware(new OverwriteFirewall(new Uri('/login')))
+            ))
+                ->withVerbs('GET')
         );
 
-        /*
-        $router->setRoute(
-            'dashboard.blog',
-            (new Route(
-                '/dashboard/blog',
-                new Action(
-                    DashboardController::class,
-                    'index'
-                )
-            ))->withMiddleware(new OverwriteFirewall(new Uri('/login')))
-        );
-        */
+
+        $route = (new Route('/dashboard/posts', new Action(PostsController::class, 'index')))
+            ->withVerbs('GET');
+        $router->setRoute('dashboard.posts.index', $route);
+
+        $route = (new Route('/dashboard/posts/create', new Action(PostsController::class, 'create')))
+            ->withVerbs('GET')
+            ->withMiddleware(CsrfFirewall::class);
+        $router->setRoute('dashboard.posts.create', $route);
+
+        $route = (new Route('/dashboard/posts/store', new Action(PostsController::class, 'store')))
+            ->withVerbs('POST');
+        $router->setRoute('dashboard.posts.store', $route);
+
+        $route = (new Route('/dashboard/posts/<id>', new Action(PostsController::class, 'edit')))
+            ->withVerbs('GET');
+        $router->setRoute('dashboard.posts.edit', $route);
+
+        $route = (new Route('/dashboard/posts/<id>', new Action(PostsController::class, 'update')))
+            ->withVerbs('POST');
+        $router->setRoute('dashboard.posts.update', $route);
+
+        $route = (new Route('/dashboard/posts/delete/<id>', new Action(PostsController::class, 'destroy')))
+            ->withVerbs('POST');
+        $router->setRoute('dashboard.posts.destroy', $route);
 
         $router->setRoute(
             'logout',

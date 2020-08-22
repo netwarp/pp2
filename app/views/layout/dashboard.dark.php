@@ -7,7 +7,7 @@
                 <div class="sidebar">
                     <ul>
                         <li><a href="/dashboard">Dashboard</a></li>
-                        <li><a href="/dashboard/blog">Blog</a></li>
+                        <li><a href="/dashboard/posts">Posts</a></li>
                         <li><a href="/dashboard/podcasts">Podcasts</a></li>
                         <li><a href="/dashboard/events">Events</a></li>
                         <li><a href="/dashboard/support">Support</a></li>
@@ -23,4 +23,12 @@
             </div>
         </div>
     </div>
+    @isset($success)
+        <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+        <script>
+            swal('Success', {{ $success }}, 'success');
+        </script>
+    @endisset
 </block:content>
+
+
