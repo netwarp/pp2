@@ -179,9 +179,11 @@ class PostsController
 
         $transaction->persist($post)->run();
 
-        // IMAGE
+
+        // CREATE image
         $id = $post->id;
         $path = directory('storage') . "/posts/{$id}";
+        $this->files->ensureDirectory($path, FilesInterface::RUNTIME);
 
         if ($this->input->file('file')) {
             $file = $this->input->file('file');
@@ -209,6 +211,8 @@ class PostsController
         }
 
         $post = $orm->getRepository(Post::class)->findByPK($id);
+        $path = directory('storage') . "posts/{$post->id}";
+        $this->files->deleteDirectory($path);
         $tr = new ORM\Transaction($orm);
         $tr->delete($post);
         $tr->run();

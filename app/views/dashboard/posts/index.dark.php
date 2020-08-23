@@ -2,7 +2,7 @@
 
 <block:content2>
     <style>
-        .table .td {
+        .table td {
             vertical-align: middle;
         }
     </style>

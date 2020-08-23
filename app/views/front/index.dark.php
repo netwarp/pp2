@@ -48,9 +48,34 @@
     <section id="section-bg1">
         <div class="container">
             <h3 class="section-title">Blog</h3>
-            <div class="row">
-
-            </div>
+            @if($posts)
+            <?php foreach ($posts as $post): ?>
+                <div class="card">
+                    @if($post->image)
+                        <div>
+                            <a href="/blog/{{ $post->slug }}">
+                                <img src="{{ $post->image }}" alt="article image" class="img-fluid">
+                            </a>
+                        </div>
+                    @endif
+                    <div class="card-body">
+                        <h4>
+                            <a href="/blog/{{ $post->slug }}">
+                                {{ $post->title ?? '' }}
+                            </a>
+                        </h4>
+                        <p>
+                            {{ $post->preview }}
+                        </p>
+                        <a href="/blog/{{ $post->slug }}" class="btn btn-primary">
+                            Lire la suite
+                        </a>
+                    </div>
+                </div>
+            <?php endforeach ?>
+            @else
+                Pas d'article pour le moment
+            @endif
         </div>
     </section>
 

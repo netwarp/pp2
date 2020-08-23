@@ -12,6 +12,8 @@ use Spiral\Views\ViewsInterface;
 use Spiral\Prototype\Traits\PrototypeTrait;
 use Psr\Http\Message\ResponseFactoryInterface;
 use Nyholm\Psr7\Response;
+use Cycle\ORM\ORM;
+use App\Database\Post;
 
 class FrontController
 {
@@ -19,11 +21,13 @@ class FrontController
 
     private $title = 'Polis Parallème';
 
-    public function index(ViewsInterface $views)
+    public function index(ViewsInterface $views, ORM $orm)
     {
         $title = $this->title;
 
-        return $views->render('front/index', compact('title'));
+        $posts = $orm->getRepository(Post::class)->select()->where('status', 'published')->orderBy('id', 'desc');
+
+        return $views->render('front/index', compact('title', 'posts'));
     }
 
     public function podcasts(ViewsInterface $views)
