@@ -36,8 +36,8 @@
                                     </td>
                                     <td><a href="/dashboard/posts/{{ $post->id }}">{{ $post->title ?? '' }}</a></td>
                                     <td>{{ $post->status ?? '' }}</td>
-                                    <td>{{ $post->created_at ?? '' }}</td>
-                                    <td>{{ $post->updated_at ?? '' }}</td>
+                                    <td>{{ $post->created_at->date ?? '' }}</td>
+                                    <td>{{ $post->updated_at->date ?? '' }}</td>
                                     <td>
                                         <a href="/dashboard/posts/{{ $post->id }}" class="btn btn-info">Edit</a>
                                     </td>

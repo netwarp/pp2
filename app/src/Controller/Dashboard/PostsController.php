@@ -81,8 +81,6 @@ class PostsController
         $action = '/dashboard/posts/store';
         $csrfToken = $request->getAttribute('csrfToken');
 
-
-
         return $views->render('dashboard/posts/create_or_edit', compact('title', 'action', 'csrfToken'));
     }
 
@@ -163,7 +161,6 @@ class PostsController
 
         $title = $this->request->data->get('title');
         $slug = $this->slugify($title);
-        $image = '';
         $preview = $this->request->data->get('preview');
         $content = $this->request->data->get('content');
         $status = $this->request->data->get('status');
@@ -171,7 +168,6 @@ class PostsController
 
         $post->title = $title;
         $post->slug = $slug;
-        $post->image = $image;
         $post->preview = $preview;
         $post->content = $content;
         $post->status = $status;
