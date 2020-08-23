@@ -25,7 +25,7 @@ class FrontController
     {
         $title = $this->title;
 
-        $posts = $orm->getRepository(Post::class)->select()->where('status', 'published')->orderBy('id', 'desc');
+        $posts = $orm->getRepository(Post::class)->select()->where('status', 'published')->orderBy('id', 'desc')->limit(3);
 
         return $views->render('front/index', compact('title', 'posts'));
     }

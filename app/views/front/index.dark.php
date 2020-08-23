@@ -45,7 +45,11 @@
         </div>
     </section>
 
-    <section id="section-bg1">
+    <section class="section-bg1">
+
+    </section>
+
+    <section id="section-blog">
         <div class="container">
             <h3 class="section-title">Blog</h3>
             @if($posts)
@@ -76,6 +80,16 @@
             @else
                 Pas d'article pour le moment
             @endif
+        </div>
+    </section>
+
+    <section class="section-bg1">
+        
+    </section>
+
+    <section id="section-events">
+        <div class="container">
+            <div class="section-title">Events</div>
         </div>
     </section>
 
