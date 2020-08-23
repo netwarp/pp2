@@ -160,5 +160,8 @@ class RoutesBootloader extends Bootloader
                 return $this->response->redirect('/');
             })
         );
+
+        $route = (new Route('/storage/<type>/<id>/<file>', new Action(FrontController::class, 'storage')));
+        $router->setRoute('storage', $route);
     }
 }

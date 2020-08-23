@@ -179,6 +179,23 @@ class PostsController
 
         $transaction->persist($post)->run();
 
+        // IMAGE
+        $id = $post->id;
+        $path = directory('storage') . "/posts/{$id}";
+
+        if ($this->input->file('file')) {
+            $file = $this->input->file('file');
+            $name = $file->getClientFilename();
+
+            $file->moveTo($path . "/{$name}");
+
+            $image = "/storage/posts/{$id}/{$name}";
+
+            $post->image = $image;
+            $transaction->persist($post);
+            $transaction->run();
+        }
+
         $redis->connect('127.0.0.1');
         $redis->set('success', 'POST UPDATED');
 

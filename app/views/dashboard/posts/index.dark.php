@@ -1,6 +1,11 @@
 <extends path="layout/dashboard"/>
 
 <block:content2>
+    <style>
+        .table .td {
+            vertical-align: middle;
+        }
+    </style>
     <div class="container-fluid mt-4">
         <h1>Posts</h1>
         <div class="card">
@@ -24,7 +29,11 @@
                             <?php foreach ($posts as $post): ?>
                                 <tr>
                                     <td><a href="/dashboard/posts/{{ $post->id }}">{{ $post->id ?? '' }}</a></td>
-                                    <td><a href="/dashboard/posts/{{ $post->id }}">{{ $post->image ?? '' }}</a></td>
+                                    <td>
+                                        <a href="/dashboard/posts/{{ $post->id }}">
+                                            <img src="{{ $post->image ?? '' }}" alt="image post" style="max-width: 80px">
+                                        </a>
+                                    </td>
                                     <td><a href="/dashboard/posts/{{ $post->id }}">{{ $post->title ?? '' }}</a></td>
                                     <td>{{ $post->status ?? '' }}</td>
                                     <td>{{ $post->created_at ?? '' }}</td>
