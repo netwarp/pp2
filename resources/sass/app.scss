@@ -104,8 +104,9 @@ section {
  */
 .admin-zone {
   .sidebar {
-    min-height: 74vh;
     background: #222;
+    min-height: 72vh;
+    height: 100%;
 
     ul {
       margin: 0;
