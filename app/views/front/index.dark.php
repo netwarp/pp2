@@ -84,7 +84,7 @@
     </section>
 
     <section class="section-bg1">
-        
+
     </section>
 
     <section id="section-events">

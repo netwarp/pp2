@@ -127,7 +127,9 @@ class RoutesBootloader extends Bootloader
                 ->withVerbs('GET')
         );
 
-
+        /**
+         * Posts
+         */
         $route = (new Route('/dashboard/posts', new Action(PostsController::class, 'index')))
             ->withVerbs('GET');
         $router->setRoute('dashboard.posts.index', $route);
@@ -152,6 +154,33 @@ class RoutesBootloader extends Bootloader
         $route = (new Route('/dashboard/posts/delete/<id>', new Action(PostsController::class, 'destroy')))
             ->withVerbs('POST');
         $router->setRoute('dashboard.posts.destroy', $route);
+
+        /**
+         * Podcasts
+         */
+        $route = (new Route('/dashboard/podcasts', new Action(PodcastsController::class, 'index')))
+            ->withVerbs('GET');
+        $router->setRoute('dashboard.podcasts.index', $route);
+
+        $route = (new Route('/dashboard/podcasts/create', new Action(PodcastsController::class, 'create')))
+            ->withVerbs('GET');
+        $router->setRoute('dashboard.podcasts.create', $route);
+
+        $route = (new Route('/dashboard/podcasts/store', new Action(PodcastsController::class, 'store')))
+            ->withVerbs('POST');
+        $router->setRoute('dashboard.podcasts.store', $route);
+
+        $route = (new Route('/dashboard/podcasts/<id>', new Action(PodcastsController::class, 'edit')))
+            ->withVerbs('GET');
+        $router->setRoute('dashboard.podcasts.edit', $route);
+
+        $route = (new Route('/dashboard/podcasts/<id>', new Action(PodcastsController::class, 'update')))
+            ->withVerbs('POST');
+        $router->setRoute('dashboard.podcasts.update', $route);
+
+        $route = (new Route('/dashboard/podcasts/delete/<id>', new Action(PodcastsController::class, 'destroy')))
+            ->withVerbs('POST');
+        $router->setRoute('dashboard.podcasts.destroy', $route);
 
         $router->setRoute(
             'logout',

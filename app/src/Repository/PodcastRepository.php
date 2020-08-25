@@ -10,6 +10,6 @@ namespace App\Repository;
 
 use Cycle\ORM\Select\Repository;
 
-class PostRepository extends Repository
+class PodcastRepository extends Repository
 {
 }
