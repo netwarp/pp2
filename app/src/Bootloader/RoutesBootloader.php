@@ -182,6 +182,33 @@ class RoutesBootloader extends Bootloader
             ->withVerbs('POST');
         $router->setRoute('dashboard.podcasts.destroy', $route);
 
+        /**
+         * Events
+         */
+        $route = (new Route('/dashboard/events', new Action(EventsController::class, 'index')))
+            ->withVerbs('GET');
+        $router->setRoute('dashboard.events.index', $route);
+
+        $route = (new Route('/dashboard/events/create', new Action(EventsController::class, 'create')))
+            ->withVerbs('GET');
+        $router->setRoute('dashboard.events.create', $route);
+
+        $route = (new Route('/dashboard/events/store', new Action(EventsController::class, 'store')))
+            ->withVerbs('POST');
+        $router->setRoute('dashboard.events.store', $route);
+
+        $route = (new Route('/dashboard/events/<id>', new Action(EventsController::class, 'edit')))
+            ->withVerbs('GET');
+        $router->setRoute('dashboard.events.edit', $route);
+
+        $route = (new Route('/dashboard/events/<id>', new Action(EventsController::class, 'update')))
+            ->withVerbs('POST');
+        $router->setRoute('dashboard.events.update', $route);
+
+        $route = (new Route('/dashboard/events/delete/<id>', new Action(EventsController::class, 'destroy')))
+            ->withVerbs('POST');
+        $router->setRoute('dashboard.events.destroy', $route);
+
         $router->setRoute(
             'logout',
             new Route('logout', function() {
